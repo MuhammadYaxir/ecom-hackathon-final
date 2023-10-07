@@ -60,7 +60,7 @@ const Categorical = async ({ params }: Props) => {
           <div className="flex w-full h-40 justify-center items-center">
             <h2>No products found for {params.slug}</h2>
           </div>
-        // </Wrapper>
+         </Wrapper>
       )}
     </>
   );

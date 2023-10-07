@@ -10,11 +10,15 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { fetchData } from "@/redux/features/cartSlice";
+
 
 
 export default function Navbar() {
-  const totalItems = 5;
+  
   const [nav, setNav] = useState(false);
+  const totalItems = useAppSelector((state) => state.cart.totalQuantity);
   const handleNav = () => {
     setNav(!nav);
   };

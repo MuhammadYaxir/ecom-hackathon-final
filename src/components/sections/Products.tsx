@@ -1,5 +1,4 @@
-// import SwipperSlidder from "../shared/SwipperSlidder";
-// import SwipperSlidder from "../shared/SwipperSlidder";
+import SwipperSlidder from "../shared/SwipperSlidder";
 import Wrapper from "../shared/Wrapper";
 
 
@@ -13,7 +12,7 @@ const Products =  () => {
         </p>
         <h3 className="text-center my-8">Check What We Have</h3>
         <div className="w-full mx-auto ">
-          {/* <SwipperSlidder /> */}
+          <SwipperSlidder />
         </div>
       </div>
     </Wrapper>
