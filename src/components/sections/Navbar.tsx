@@ -10,8 +10,7 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { fetchData } from "@/redux/features/cartSlice";
+import {  useAppSelector } from "@/redux/store";
 
 
 

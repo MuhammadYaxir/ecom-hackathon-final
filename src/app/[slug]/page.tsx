@@ -54,7 +54,7 @@ const Categorical = async ({ params }: Props) => {
               </div>
             ))}
           </div>
-        // </Wrapper>
+         </Wrapper>
       ) : (
         <Wrapper>
           <div className="flex w-full h-40 justify-center items-center">

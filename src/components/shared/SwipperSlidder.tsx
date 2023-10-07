@@ -27,8 +27,8 @@ const SwipperSlidder = async () => {
   return (
     <>
       <Swiper
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
         breakpoints={{
           320: {
             slidesPerView: 1,
