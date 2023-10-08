@@ -26,6 +26,7 @@ const getProduct = async ({ params }: Props) => {
 };
 
 const SingleProduct = async ({ params }: Props) => {
+  const user_id = "12345a4sdf";
   // const { userId } = auth();
   const product: Product = await getProduct({ params });
 
@@ -59,7 +60,7 @@ const SingleProduct = async ({ params }: Props) => {
           <h3 className="font-normal mt-10">
             Price: <span className="font-bold">${product.price}.00</span>
           </h3>
-          <AddtoCartProduct product={product} qty={1}/>
+          <AddtoCartProduct product={product} qty={1} userId={user_id}/>
         </div>
       </div>
     </Wrapper>
