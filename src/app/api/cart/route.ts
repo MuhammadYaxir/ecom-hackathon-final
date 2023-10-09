@@ -1,12 +1,12 @@
 import { addToCart, cartTable, db } from "@/lib/drizzle";
 import { NextRequest, NextResponse } from "next/server";
-// import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 import { and, eq } from "drizzle-orm";
 
 
 export const POST = async (request: NextRequest) => {
-//   const { userId } = auth();
-  const userId = "12345a4sdf";
+  const { userId } = auth();
+  // const userId = "12345a4sdf";
 
   const req: addToCart = await request.json();
 
@@ -15,7 +15,7 @@ export const POST = async (request: NextRequest) => {
       const res = await db
         .insert(cartTable)
         .values({
-          user_id: userId,
+          user_id: userId as string,
           product_id: req.product_id,
           quantity: req.quantity,
           image: req.image,

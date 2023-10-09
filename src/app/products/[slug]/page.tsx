@@ -3,7 +3,7 @@ import { client } from "../../../../sanity/lib/client";
 import ImageComponent from "@/components/utils/ImageComponent";
 import AddtoCartProduct from "@/components/shared/addtoCartProduct";
 import { Product, SanityProducts } from "@/interfaces";
-// import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 
 type Props = {
   params: {
@@ -26,8 +26,8 @@ const getProduct = async ({ params }: Props) => {
 };
 
 const SingleProduct = async ({ params }: Props) => {
-  const user_id = "12345a4sdf";
-  // const { userId } = auth();
+  // const user_id = "12345a4sdf";
+  const { userId: user_id } = auth();
   const product: Product = await getProduct({ params });
 
   return (
@@ -60,7 +60,7 @@ const SingleProduct = async ({ params }: Props) => {
           <h3 className="font-normal mt-10">
             Price: <span className="font-bold">${product.price}.00</span>
           </h3>
-          <AddtoCartProduct product={product} qty={1} userId={user_id}/>
+          <AddtoCartProduct product={product} qty={1} userId={user_id as string}/>
         </div>
       </div>
     </Wrapper>

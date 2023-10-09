@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import Menu from "../shared/Menu";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,13 +10,21 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useState } from 'react'
-import {  useAppSelector } from "@/redux/store";
+import {  useAppDispatch, useAppSelector } from "@/redux/store";
+import { UserButton } from "@clerk/nextjs";
+import { fetchData } from "@/redux/features/cartSlice";
 
 
 
-export default function Navbar() {
+export default function Navbar({ userId }: { userId: string }) {
   
   const [nav, setNav] = useState(false);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData(userId)); // Dispatch the fetchData action with the user id
+  }, [dispatch, userId]);
+
   const totalItems = useAppSelector((state) => state.cart.totalQuantity);
   const handleNav = () => {
     setNav(!nav);
@@ -42,7 +50,7 @@ export default function Navbar() {
           />
         </div>
         <div className="hidden lg:flex items-center justify-between gap-2">
-          {/* <UserButton afterSignOutUrl="/" /> */}
+          <UserButton afterSignOutUrl="/" />
           <Link href={"/cart"} onClick={handleNav}>
             <div className="w-10 h-10 rounded-full bg-[#f1f1f1] flex justify-center items-center relative">
               <AiOutlineShoppingCart size={25} />
@@ -76,7 +84,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="mt-28 flex flex-col items-center justify-center gap-5">
-          {/* <UserButton afterSignOutUrl="/" /> */}
+          <UserButton afterSignOutUrl="/" />
           <Link href={"/cart"} onClick={handleNav}>
             <div className="w-12 h-12 rounded-full bg-[#f1f1f1] flex justify-center items-center relative">
               <AiOutlineShoppingCart />

@@ -1,7 +1,7 @@
 "use client";
 
 import { Product } from "@/interfaces";
-// import getStipePromise from "@/lib/stripe";
+import getStipePromise from "@/lib/stripe";
 
 interface Props {
   products: Product[];
@@ -9,7 +9,7 @@ interface Props {
 
 const StripeCheckOutButton = (props: Props) => {
   const handleCheckout = async () => {
-    // const stripe = await getStipePromise();
+    const stripe = await getStipePromise();
     const response = await fetch("/api/stripe-session/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,9 +19,9 @@ const StripeCheckOutButton = (props: Props) => {
 
     const data = await response.json();
 
-  //   if (data.session) {
-  //     stripe?.redirectToCheckout({ sessionId: data.session.id });
-  //   }
+    if (data.session) {
+      stripe?.redirectToCheckout({ sessionId: data.session.id });
+    }
   };
 
   return (
